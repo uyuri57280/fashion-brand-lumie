@@ -16,10 +16,19 @@ const CollectionCard = (props: collectionCardProps) => {
       overflow: 'hidden',
       width: { xs: 128, md: 240, lg: 320 },
       height: { xs: 128, md: 240, lg: 320 },
-      position: 'relative',
     }}>
-      <Link href={collectionUrl}>
-        <Image src={imageUrl} alt={name} fill />
+      <Link style={{
+        position: 'relative',
+        display: 'block',
+        width: '100%',
+        height: '100%'
+      }} href={collectionUrl}>
+        <Image
+          src={imageUrl}
+          alt={name}
+          fill
+          sizes="(max-width: 600px) 128px, (max-width: 900px) 240px, 320px"
+        />
       </Link>
     </Box>
   )
