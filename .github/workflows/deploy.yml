@@ -18,8 +18,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /home/on/nextjs-app
+            cd /home/on/project/fashion-brand-lumie
             git pull origin main
             npm install
             npm run build
-            pm2 restart nextjs-app
+            pm2 restart fashion-brand-lumie
