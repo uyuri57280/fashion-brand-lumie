@@ -6,29 +6,11 @@ import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import { grey } from '@mui/material/colors';
+import { getCollectionDetail } from '@/lib/collections';
 
-const images = [
-    {
-        src: '/collection/skirt1.jpg',
-        name: 'skirt1'
-    },
-    {
-        src: '/collection/skirt2.jpg',
-        name: 'skirt2'
-    },
-    {
-        src: '/collection/skirt3.jpg',
-        name: 'skirt3'
-    },
-    {
-        src: '/collection/skirt4.jpg',
-        name: 'skirt4'
-    },
-]
-
-const CollectionDetailGallery = () => {
+const CollectionDetailGallery = ({ item }: { item: string }) => {
     const [selectedIndex, setselectedIndex] = useState(0);
-    const hasMultipleImages = images.length > 1;
+    const displayDetailGallery = getCollectionDetail(item);
 
     return (
         <Box sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -41,16 +23,20 @@ const CollectionDetailGallery = () => {
                     lexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    position:'relative'
+                    position: 'relative'
                 }}
             >
-                <Image
-                    src={images[selectedIndex].src}
-                    alt='skirt'
-                    width={300}
-                    height={400}
-                    style={{ width: '100%', height: 'auto' }}
-                />
+                {displayDetailGallery.length > 0 && (
+                    <Image
+                        src={displayDetailGallery[selectedIndex].imageUrl}
+                        alt='skirt'
+                        width={300}
+                        height={400}
+                        loading="eager"
+                        style={{ width: '100%', height: 'auto' }}
+                    />
+                )}
+                {/* 画像切り替えボタン */}
                 <Box sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -59,62 +45,63 @@ const CollectionDetailGallery = () => {
                     top: '50%',
                     transform: 'translate(0%,-50%)'
                 }}>
-                    <Stack direction="row" spacing={35} sx={{ alignItems: 'center' }}>
-                        <IconButton
-                            size='large'
-                            onClick={() => {
-                                setselectedIndex((i) => (i - 1 + images.length) % images.length);
-                                console.log("selectedIndex:", selectedIndex);
-                            }}
-                            sx={{
-                                bgcolor: grey[300],
-                                color: 'white',
-                                '&:hover': {
-                                    bgcolor: grey[500]
-                                },
-                                opacity:0.7
-                            }}
-                        >
-                            <ExpandLessIcon sx={{ transform: 'rotate(-90deg)' }} fontSize='inherit' />
-                        </IconButton>
-                        <IconButton
-                            size='large'
-                            onClick={() => {
-                                setselectedIndex((i) => (i + 1) % images.length);
-                                console.log("selectedIndex:", selectedIndex);
-                            }}
-                            sx={{
-                                bgcolor: grey[300],
-                                color: 'white',
-                                '&:hover': {
-                                    bgcolor: grey[500]
-                                },
-                                opacity:0.7
-                            }}
-                        >
-                            <ExpandLessIcon sx={{ transform: 'rotate(90deg)' }} fontSize='inherit' />
-                        </IconButton>
-                    </Stack>
+                    {(displayDetailGallery.length > 1) && (
+                        <Stack direction="row" spacing={35} sx={{ alignItems: 'center' }}>
+                            <IconButton
+                                size='large'
+                                onClick={() => {
+                                    setselectedIndex((i) => (i - 1 + displayDetailGallery.length) % displayDetailGallery.length);
+                                }}
+                                sx={{
+                                    bgcolor: grey[300],
+                                    color: 'white',
+                                    '&:hover': {
+                                        bgcolor: grey[500]
+                                    },
+                                    opacity: 0.7
+                                }}
+                            >
+                                <ExpandLessIcon sx={{ transform: 'rotate(-90deg)' }} fontSize='inherit' />
+                            </IconButton>
+                            <IconButton
+                                size='large'
+                                onClick={() => {
+                                    setselectedIndex((i) => (i + 1) % displayDetailGallery.length);
+                                }}
+                                sx={{
+                                    bgcolor: grey[300],
+                                    color: 'white',
+                                    '&:hover': {
+                                        bgcolor: grey[500]
+                                    },
+                                    opacity: 0.7
+                                }}
+                            >
+                                <ExpandLessIcon sx={{ transform: 'rotate(90deg)' }} fontSize='inherit' />
+                            </IconButton>
+                        </Stack>
+                    )}
                 </Box>
             </Box>
 
 
             {/* 下 画像を小さく一覧表示 */}
-            <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: 2 }}>
-                {images.map((image, index) => (
-                    <Image
-                        key={index}
-                        src={image.src}
-                        alt={image.name}
-                        width={80}
-                        height={100}
-                        onClick={() => {
-                            setselectedIndex(index);
-                        }}
-                    />
-                ))}
-            </Box>
-
+            {(displayDetailGallery.length > 1) && (
+                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: 2 }}>
+                    {displayDetailGallery.map((image, index) => (
+                        <Image
+                            key={index}
+                            src={image.imageUrl}
+                            alt={image.name}
+                            width={80}
+                            height={100}
+                            onClick={() => {
+                                setselectedIndex(index);
+                            }}
+                        />
+                    ))}
+                </Box>
+            )}
         </Box>
     )
 }

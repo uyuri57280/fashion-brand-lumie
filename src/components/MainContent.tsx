@@ -9,7 +9,7 @@ const MainContent = () => {
     <Box component='section'>
       {/* <div className='absolute'> */}
       <Box sx={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', overflow: 'hidden' }}>
-        <Image src="/toppage/skirt.jpg" alt="girl-skirt" fill style={{ objectFit: 'cover' }} />
+        <Image src="/toppage/skirt.jpg" alt="girl-skirt" fill style={{ objectFit: 'cover' }} loading="eager" />
         <Box
           sx={{
             position: 'absolute',
