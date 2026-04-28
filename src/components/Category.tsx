@@ -53,14 +53,14 @@ const Category = () => {
         <Box>
             <Box sx={{ p: 4, display: 'flex', flexDirection: 'column', gap: 2 }} className='p-8 flex flex-col gap-4'>
                 <Typography sx={{ fontWeight: 'bold', fontSize: '2rem' }} >CATEGORY</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, flexWrap: 'wrap' }}>
                     {categories1.map((categorie, index) => (
                         <Link href="/" key={index}>
                             <Typography sx={{fontSize:'0.875rem', fontWeight:'bold', textDecoration:'underline'}}>{categorie.name}</Typography>
                         </Link>
                     ))}
                 </Box>
-                <Box sx={{display:'flex', flexDirection:'row', gap:4}}>
+                <Box sx={{display:'flex', flexDirection:'row', gap:4, flexWrap: 'wrap'}}>
                     {categories2.map((categorie, index) => (
                         <Link href="/" key={index}>
                             <Typography sx={{fontSize:'0.875rem', fontWeight:'bold', textDecoration:'underline'}}>{categorie.name}</Typography>
@@ -68,9 +68,13 @@ const Category = () => {
                     ))}
                 </Box>
             </Box>
-            <Box sx={{display:'flex', flexDirection:'row', justifyContent:'center', gap:4}} className='flex flex-row justify-between'>
-                <Image src="/category/girl-dress2.jpg" alt="girl-dress" width={190} height={220} />
-                <Image src="/category/girl-dress2.jpg" alt="girl-dress" width={190} height={220} />
+            <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: 4, px: 4 }}>
+                <Box sx={{ position: 'relative', flex: 1, aspectRatio: '190 / 220', maxWidth: 280 }}>
+                    <Image src="/category/girl-dress2.jpg" alt="girl-dress" fill style={{ objectFit: 'cover' }} />
+                </Box>
+                <Box sx={{ position: 'relative', flex: 1, aspectRatio: '190 / 220', maxWidth: 280 }}>
+                    <Image src="/category/girl-dress2.jpg" alt="girl-dress" fill style={{ objectFit: 'cover' }} />
+                </Box>
             </Box>
 
         </Box>

@@ -19,13 +19,13 @@ const MainContent = () => {
             transform: 'translate(-50%,-50%)'
           }}
         >
-          <Typography variant='topDisplay' sx={{ textAlign:'center', fontSize:'3rem' }}>
+          <Typography variant='topDisplay' sx={{ textAlign:'center', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
             LUMIE2026
           </Typography>
-          <Typography variant='topDisplay' sx={{ color: 'black', textAlign:'center' }}>
+          <Typography variant='topDisplay' sx={{ color: 'black', textAlign:'center', fontSize: { xs: '1.5rem', sm: '2rem', md: '4rem' } }}>
             DayDream
           </Typography>
-          <Typography variant='accentDisplay' sx={{ color: pink[50], textAlign: 'right' }}>
+          <Typography variant='accentDisplay' sx={{ color: pink[50], textAlign: 'right', fontSize: { xs: '1.5rem', sm: '2rem', md: '4rem' } }}>
             Collection
           </Typography>
         </Box>
