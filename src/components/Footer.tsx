@@ -1,10 +1,21 @@
-import React from 'react'
+import { Box, Typography } from '@mui/material'
 
 const Footer = () => {
   return (
-    <footer className="fixed bottom-0 left-0 z-30 bg-gray-100 w-full p-8 md:pl-16 flex justify-center text-sm text-gray-600 border-t border-gray-300">
-    <h6>© 2026 Lumie All rights reserved.</h6>
-  </footer>
+    <Box
+      component="footer"
+      sx={{
+        py: 4,
+        textAlign: 'center',
+        borderTop: '1px solid',
+        borderColor: 'divider',
+        mt: 8,
+      }}
+    >
+      <Typography variant="body2" color="text.secondary">
+        © {new Date().getFullYear()} Lumie All rights reserved.
+      </Typography>
+    </Box>
   )
 }
 

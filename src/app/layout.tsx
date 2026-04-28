@@ -4,9 +4,9 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import theme from '@/theme';
-import ModeSwitch from '@/components/ModeSwitch';
 import MenuAppBar from '@/components/Header';
 import type { Metadata } from "next";
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: "Lumie",
@@ -24,8 +24,9 @@ export default function RootLayout(props: { children: React.ReactNode }) {
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             {/* <ModeSwitch /> */}
-            <MenuAppBar/>
+            <MenuAppBar />
             {props.children}
+            <Footer />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

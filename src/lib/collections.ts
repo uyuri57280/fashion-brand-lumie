@@ -51,12 +51,12 @@ const images = [
         name: "eyemask",
     },
     {
-        imageUrl: "/collection/Knapsack1.JPG",
-        name: "Knapsack",
+        imageUrl: "/collection/knapsack1.JPG",
+        name: "knapsack",
     },
     {
-        imageUrl: "/collection/Knapsack2.JPG",
-        name: "Knapsack",
+        imageUrl: "/collection/knapsack2.JPG",
+        name: "knapsack",
     },
     {
         imageUrl: "/collection/mail.JPG",
